@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>❤️ Happy Birthday ❤️</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#ff8fb1,#ff4f81,#ffb6c9);
+    color:white;
+    overflow-x:hidden;
+    text-align:center;
+}
+
+
+/* =========================
+   PASSWORD
+========================= */
+
+#lockScreen{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
+}
+
+#lockScreen h1{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+#lockScreen p{
+    font-size:17px;
+    opacity:.9;
+}
+
+#password{
+    width:280px;
+    padding:15px;
+    border:none;
+    outline:none;
+    border-radius:30px;
+    text-align:center;
+    font-size:18px;
+    margin:20px 0 12px;
+}
+
+#lockScreen button{
+    border:none;
+    padding:14px 35px;
+    border-radius:30px;
+    background:white;
+    color:#ff4f81;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#error{
+    margin-top:15px;
+}
+
+
+/* =========================
+   MAIN SITE
+========================= */
+
+#mainSite{
+    display:none;
+    min-height:100vh;
+    padding:35px 20px 120px;
+}
+
+.storyPage{
+    max-width:700px;
+    margin:auto;
+}
+
+.storyPage h1{
+    font-size:38px;
+    margin-top:20px;
+    text-shadow:0 3px 10px rgba(0,0,0,.2);
+}
+
+.storyPage h2{
+    font-size:28px;
+    margin-top:35px;
+}
+
+.storyPage p{
+    font-size:19px;
+    line-height:2;
+    margin:22px auto;
+    max-width:620px;
+}
+
+
+/* =========================
+   MUSIC FIXED BOTTOM
+========================= */
+
+.musicBox{
+    position:fixed;
+    left:50%;
+    bottom:0;
+    transform:translateX(-50%);
+
+    width:calc(100% - 20px);
+    max-width:650px;
+
+    padding:13px 16px;
+
+    background:rgba(255,255,255,.18);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.35);
+
+    border-radius:25px 25px 0 0;
+
+    box-shadow:0 -5px 25px rgba(0,0,0,.18);
+
+    z-index:9999;
+}
+
+.musicTitle{
+    font-size:15px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.musicControls{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+#playButton{
+    width:43px;
+    height:43px;
+    min-width:43px;
+
+    border:none;
+    border-radius:50%;
+
+    background:white;
+    color:#ff4f81;
+
+    font-size:18px;
+    font-weight:bold;
+}
+
+.progressArea{
+    flex:1;
+    height:6px;
+    background:rgba(255,255,255,.35);
+    border-radius:10px;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+#progressBar{
+    width:0%;
+    height:100%;
+    background:white;
+    border-radius:10px;
+}
+
+.time{
+    display:flex;
+    justify-content:space-between;
+    font-size:11px;
+    margin-top:5px;
+    opacity:.9;
+}
+
+
+/* =========================
+   HEARTS
+========================= */
+
+.heart{
+    position:fixed;
+    bottom:-50px;
+    color:white;
+    pointer-events:none;
+    z-index:999;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,.8),
+        0 0 15px rgba(255,50,120,.7);
+
+    animation:heartUp linear forwards;
+}
+
+@keyframes heartUp{
+
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    50%{
+        transform:translateY(-50vh) rotate(180deg);
+        opacity:.9;
+    }
+
+    100%{
+        transform:translateY(-115vh) rotate(360deg);
+        opacity:0;
+    }
+
+}
+
+
+/* =========================
+   TEXT ANIMATION
+========================= */
+
+.storyPage{
+    animation:pageIn 1.2s ease;
+}
+
+@keyframes pageIn{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     PASSWORD SCREEN
+========================= -->
+
+<div id="lockScreen">
+
+    <h1>❤️ A Special Surprise ❤️</h1>
+
+    <p>
+        في حاجة صغيرة مستنياكي هنا...
+        اكتبي الباسورد عشان تفتحيها ❤️
+    </p>
+
+    <input
+        id="password"
+        type="password"
+        placeholder="اكتبي الباسورد"
+    >
+
+    <button onclick="unlock()">
+        Unlock ❤️
+    </button>
+
+    <div id="error"></div>
+
+</div>
+
+
+
+<!-- =========================
+     MAIN SITE
+========================= -->
+
+<div id="mainSite">
+
+    <div class="storyPage">
+
+        <h1>
+            ❤️ Happy Birthday ❤️
+        </h1>
+
+        <h2>
+            كل سنة وإنتِ طيبة ❤️
+        </h2>
+
+        <p>
+            النهارده مش يوم عادي، النهارده يوم مميز جدًا
+            لأنه اليوم اللي بنحتفل فيه بيكي وبوجودك.
+        </p>
+
+        <p>
+            أتمنى السنة الجديدة من عمرك تكون مليانة
+            فرحة وضحك ونجاح وحاجات حلوة كتير.
+        </p>
+
+        <p>
+            مهما اتغيرت الأيام والوقت عدى بسرعة،
+            تفضلي دايمًا شخص مميز ومكانك يفضل كبير.
+        </p>
+
+        <p>
+            أتمنى كل أمنية نفسك فيها تتحقق،
+            وكل يوم جاي يكون أحلى من اليوم اللي قبله.
+        </p>
+
+        <p>
+            خلي يومك النهارده كله فرحة،
+            واضحي كتير، لأنك تستاهلي يوم جميل زيك ❤️
+        </p>
+
+        <p>
+            وكل سنة وإنتِ بخير،
+            وكل سنة والابتسامة على وشك ❤️
+        </p>
+
+        <h2>
+            ❤️ Happy 16th Birthday ❤️
+        </h2>
+
+        <p>
+            دي مجرد بداية صغيرة للمفاجأة...
+            وكل حاجة حلوة هنا معمولة مخصوص عشان يومك.
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         MUSIC
+    ========================= -->
+
+    <div class="musicBox">
+
+        <div class="musicTitle">
+            🎵 أغنية مخصوص ليكي ❤️
+        </div>
+
+        <div class="musicControls">
+
+            <button
+                id="playButton"
+                onclick="toggleMusic()">
+                ▶
+            </button>
+
+            <div
+                class="progressArea"
+                onclick="seekMusic(event)">
+
+                <div id="progressBar"></div>
+
+            </div>
+
+        </div>
+
+        <div class="time">
+
+            <span id="currentTime">
+                0:00
+            </span>
+
+            <span id="duration">
+                0:00
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<audio
+    id="music"
+    src="song.mp3"
+    preload="auto">
+</audio>
+
+
+
+<script>
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let currentPage = 0;
+
+const pages =
+    document.querySelectorAll(".storyPage");
+
+const music =
+    document.getElementById("music");
+
+const playButton =
+    document.getElementById("playButton");
+
+const progressBar =
+    document.getElementById("progressBar");
+
+const currentTime =
+    document.getElementById("currentTime");
+
+const duration =
+    document.getElementById("duration");
+
+
+
+/* =========================
+   PASSWORD
+========================= */
+
+function unlock(){
+
+    const password =
+        document
+        .getElementById("password")
+        .value
+        .trim();
+
+    const error =
+        document.getElementById("error");
+
+
+    if(password === "menaa"){
+
+        document
+        .getElementById("lockScreen")
+        .style.display = "none";
+
+        document
+        .getElementById("mainSite")
+        .style.display = "block";
+
+
+        /* تشغيل الأغنية */
+
+        music.currentTime = 0;
+
+        music.play()
+        .then(() => {
+
+            playButton.innerHTML = "Ⅱ";
+
+        })
+        .catch(() => {
+
+            playButton.innerHTML = "▶";
+
+        });
+
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+    else{
+
+        error.innerHTML =
+            "الباسورد غلط 😭❤️";
+
+        setTimeout(() => {
+
+            error.innerHTML = "";
+
+        },2000);
+
+    }
+
+}
+
+
+
+/* =========================
+   ENTER
+========================= */
+
+document
+.getElementById("password")
+.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key === "Enter"){
+            unlock();
+        }
+
+    }
+);
+
+
+
+/* =========================
+   MUSIC
+========================= */
+
+function toggleMusic(){
+
+    if(music.paused){
+
+        music.play();
+
+        playButton.innerHTML = "Ⅱ";
+
+    }
+
+    else{
+
+        music.pause();
+
+        playButton.innerHTML = "▶";
+
+    }
+
+}
+
+
+
+/* =========================
+   TIME
+========================= */
+
+function formatTime(seconds){
+
+    if(isNaN(seconds)){
+        return "0:00";
+    }
+
+    let minutes =
+        Math.floor(seconds / 60);
+
+    let secs =
+        Math.floor(seconds % 60);
+
+    if(secs < 10){
+        secs = "0" + secs;
+    }
+
+    return minutes + ":" + secs;
+
+}
+
+
+
+music.addEventListener(
+    "loadedmetadata",
+    function(){
+
+        duration.innerHTML =
+            formatTime(music.duration);
+
+    }
+);
+
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+music.addEventListener(
+    "timeupdate",
+    function(){
+
+        if(music.duration){
+
+            let percent =
+                (music.currentTime /
+                music.duration) * 100;
+
+            progressBar.style.width =
+                percent + "%";
+
+            currentTime.innerHTML =
+                formatTime(
+                    music.currentTime
+                );
+
+        }
+
+    }
+);
+
+
+
+/* =========================
+   SEEK
+========================= */
+
+function seekMusic(event){
+
+    if(!music.duration) return;
+
+    const rect =
+        event.currentTarget
+        .getBoundingClientRect();
+
+    const percent =
+        (event.clientX - rect.left)
+        / rect.width;
+
+    music.currentTime =
+        percent * music.duration;
+
+}
+
+
+
+/* =========================
+   END
+========================= */
+
+music.addEventListener(
+    "ended",
+    function(){
+
+        playButton.innerHTML = "▶";
+
+        progressBar.style.width = "0%";
+
+        currentTime.innerHTML =
+            "0:00";
+
+    }
+);
+
+
+
+/* =========================
+   MANY HEARTS
+========================= */
+
+function createHeart(){
+
+    const heart =
+        document.createElement("div");
+
+    heart.className = "heart";
+
+    const hearts = [
+        "❤️",
+        "♡",
+        "♥",
+        "💕",
+        "💗",
+        "💖",
+        "💓"
+    ];
+
+    heart.innerHTML =
+        hearts[
+            Math.floor(
+                Math.random() *
+                hearts.length
+            )
+        ];
+
+    heart.style.left =
+        Math.random() * 100 + "%";
+
+    heart.style.animationDuration =
+        (4 + Math.random() * 6) + "s";
+
+    heart.style.fontSize =
+        (16 + Math.random() * 25) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    },11000);
+
+}
+
+
+
+/* قلوب كتير */
+
+setInterval(createHeart,350);
+
+
+/* قلوب إضافية عند فتح الموقع */
+
+for(let i = 0; i < 25; i++){
+
+    setTimeout(
+        createHeart,
+        i * 120
+    );
+
+}
+
+
+/* =========================
+   تشغيل الأغنية عند أول تفاعل
+   لو المتصفح منع AutoPlay
+========================= */
+
+document.addEventListener(
+    "click",
+    function(){
+
+        if(
+            document.getElementById("mainSite")
+            .style.display === "block"
+            &&
+            music.paused
+        ){
+
+            music.play()
+            .then(() => {
+
+                playButton.innerHTML = "Ⅱ";
+
+            })
+            .catch(() => {});
+
+        }
+
+    },
+    {once:true}
+);
+
+
+</script>
+
+</body>
+</html>
